@@ -1,7 +1,9 @@
 package de.heikozelt.objectdetection;
 
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileWriter;
 import java.io.IOException;
 
 
@@ -74,7 +76,7 @@ public class Start {
 		}
 	}
 	
-	public static DetectedObjects detect(String fileName) throws IOException, TranslateException {
+	public static Result detect(String fileName) throws IOException, TranslateException {
     	logger.debug("reading image from file.");
     	File f = new File("collection" + File.separator + fileName);
 		FileInputStream in = new FileInputStream(f);
@@ -82,15 +84,15 @@ public class Start {
 		DetectedObjects objects = predictor.predict(img);
 		logger.debug("result: " + objects.getClass().getName());
 		logger.debug("result.items(): " + objects.items().getClass().getName());
-		return objects;
+		Result result = new Result(fileName, img.getWidth(), img.getHeight(), objects);
+		return result;
 	}
 	
 	public static Result[] detectAll() throws IOException, TranslateException {
 		String[] fileNames = new File("collection").list();
 		Result[] results = new Result[fileNames.length];
 		for(int i = 0; i < fileNames.length; i++) { 
-		  DetectedObjects objects = detect(fileNames[i]);
-		  results[i] = new Result(fileNames[i], objects); 
+		  results[i] = detect(fileNames[i]); 
 		}
 		return results;
 	}
@@ -105,14 +107,25 @@ public class Start {
 		}
 	}
 	
-	public static void exportAll(Result[] results) {
+	public static void exportAll(Result[] results) throws IOException {
 		System.out.println("export to do");
+		StringBuilder str = new StringBuilder();
+		str.append("<gmaf-collection xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:noNamespaceSchemaLocation=\"gmaf_schema.xsd\">");
+		for(Result r: results) {
+		  str.append(r.asXml());
+		}
+		str.append("</gmaf-collection>");
+		BufferedWriter bwr = new BufferedWriter(new FileWriter(new File("result.xml")));
+		bwr.write(str.toString());
+		bwr.close();
 	}
 
 	public static void main(String[] args) throws IOException, TranslateException {
+		logger.info("Batch job started");
 		init();
 		Result[] results = detectAll();
 		printAll(results);
 		exportAll(results);
+		logger.info("Batch job finished");
 	}
 }
