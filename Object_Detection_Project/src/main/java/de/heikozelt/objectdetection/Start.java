@@ -5,7 +5,9 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileWriter;
 import java.io.IOException;
-
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -23,6 +25,10 @@ import ai.djl.repository.zoo.ZooModel;
 import ai.djl.translate.TranslateException;
 
 public class Start {
+	private static String COLLECTION_PATH = "collection";
+	private static String RESULT_XML_FILENAME = "result.xml";
+	private static String BOUNDING_BOXES_PATH = "boxes";
+	
 	private static Logger logger = LogManager.getLogger(Start.class);
 
 	// Die static-Felder koennen unabhängig von der init()-methode gesetzt werden.
@@ -75,51 +81,109 @@ public class Start {
 			e.printStackTrace();
 		}
 	}
-	
+
+	/**
+	 * Speichert eine Kopie des Bild mit eingezeichneten Bounding Boxes. Das ist
+	 * sehr anschaulich und nützlich Zwecks Debugging und Evaluation.
+	 * 
+	 * @param img Original-Bild
+	 * @param detection erkannte Objekte
+	 * @param bbFileName Dateiname, unter dem die Kopie gespeichert wird
+	 * @throws IOException
+	 */
+	public static void saveBoundingBoxImage(Image img, DetectedObjects detection, String bbFileName)
+			throws IOException {
+		Path imagePath = Paths.get(bbFileName);
+
+		// Make image copy with alpha channel because original image was jpg
+		Image newImage = img.duplicate(Image.Type.TYPE_INT_ARGB);
+		newImage.drawBoundingBoxes(detection);
+
+		// OpenJDK can't save jpg with alpha channel
+		newImage.save(Files.newOutputStream(imagePath), "png");
+		logger.info("Detected objects image has been saved in: {}", imagePath);
+	}
+
+	/**
+	 * liest Bild aus Datei und startet die Objekt-Erkennung.
+	 * Nebenbei wird eine Kopie mit Bounding Boxes gespeichert.
+	 * @param fileName
+	 * @return erkannte Objekte und weitere Infos
+	 * @throws IOException
+	 * @throws TranslateException
+	 */
 	public static Result detect(String fileName) throws IOException, TranslateException {
-    	logger.debug("reading image from file.");
-    	File f = new File("collection" + File.separator + fileName);
+		String path = COLLECTION_PATH + File.separator + fileName;
+		logger.debug("reading image from file: " + path);
+		File f = new File(path);
 		FileInputStream in = new FileInputStream(f);
 		Image img = ImageFactory.getInstance().fromInputStream(in);
 		DetectedObjects objects = predictor.predict(img);
 		logger.debug("result: " + objects.getClass().getName());
 		logger.debug("result.items(): " + objects.items().getClass().getName());
 		Result result = new Result(fileName, img.getWidth(), img.getHeight(), objects);
+		String bbFilename = BOUNDING_BOXES_PATH + File.separator + f.getName() + ".boxes.png";
+		saveBoundingBoxImage(img, objects, bbFilename);
 		return result;
 	}
-	
+
+	/**
+	 * Führt die Objekt-Ekennung für alle Bilder im "collection"-Verzeichnis durch.
+	 * @return
+	 * @throws IOException
+	 * @throws TranslateException
+	 */
 	public static Result[] detectAll() throws IOException, TranslateException {
-		String[] fileNames = new File("collection").list();
+		String[] fileNames = new File(COLLECTION_PATH).list();
 		Result[] results = new Result[fileNames.length];
-		for(int i = 0; i < fileNames.length; i++) { 
-		  results[i] = detect(fileNames[i]); 
+		for (int i = 0; i < fileNames.length; i++) {
+			results[i] = detect(fileNames[i]);
 		}
 		return results;
 	}
-	
+
+	/**
+	 * Schreibt das Ergebnis der Objekt-Erkennung ins Log. 
+	 * @param results
+	 */
 	public static void printAll(Result[] results) {
-		for(Result r: results) {
-		  System.out.println(r.getFilename());
-		  DetectedObjects objects = r.getObjects();
-		  for(int i = 0; i < objects.getNumberOfObjects(); i++) {
-		    System.out.println(objects.item(i));
-		  }
+		for (Result r : results) {
+			logger.info("Dateiname: " + r.getFilename());
+			DetectedObjects objects = r.getObjects();
+			for (int i = 0; i < objects.getNumberOfObjects(); i++) {
+				logger.info("erkannt: " + objects.item(i));
+			}
 		}
 	}
+
 	
+	/**
+	 * Speichert das Ergebnis der Objekt-Erkennung als eine "große" XML-Datei.
+	 * @param results
+	 * @throws IOException
+	 */
 	public static void exportAll(Result[] results) throws IOException {
-		System.out.println("export to do");
+		logger.info("exportiere Ergebnisse im XML-Format");
 		StringBuilder str = new StringBuilder();
-		str.append("<gmaf-collection xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:noNamespaceSchemaLocation=\"gmaf_schema.xsd\">");
-		for(Result r: results) {
-		  str.append(r.asXml());
+		str.append(
+				"<gmaf-collection xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:noNamespaceSchemaLocation=\"gmaf_schema.xsd\">");
+		for (Result r : results) {
+			str.append(r.asXml());
 		}
 		str.append("</gmaf-collection>");
-		BufferedWriter bwr = new BufferedWriter(new FileWriter(new File("result.xml")));
+		BufferedWriter bwr = new BufferedWriter(new FileWriter(new File(RESULT_XML_FILENAME)));
 		bwr.write(str.toString());
 		bwr.close();
 	}
 
+	/**
+	 * Hauptprogramm.
+	 * In Form einer Batch-Verarbeitung werden alle Bilder gelesen, Objekte erkannt und das Ergebnis gespeichert.
+	 * Danach beendet sich das Programm.
+	 * @param args
+	 * @throws IOException
+	 * @throws TranslateException
+	 */
 	public static void main(String[] args) throws IOException, TranslateException {
 		logger.info("Batch job started");
 		init();

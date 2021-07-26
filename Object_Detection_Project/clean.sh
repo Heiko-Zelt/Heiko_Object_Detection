@@ -1,4 +1,1 @@
-#rm temp/*
-rm mmfgs/*
-rm graphcodes/*
-rm thumbnails/*
+rm boxes/*

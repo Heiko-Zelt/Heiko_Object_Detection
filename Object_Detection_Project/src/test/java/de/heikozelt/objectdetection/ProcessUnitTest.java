@@ -1,4 +1,4 @@
-package de.fuh.fpss21.group1;
+package de.heikozelt.objectdetection;
 
 import java.io.File;
 

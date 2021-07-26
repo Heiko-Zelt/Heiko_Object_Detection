@@ -3,7 +3,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>de.fuh.fpss21</groupId>
-	<artifactId>Group1</artifactId>
+	<artifactId>Heiko_Object_Detection</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<properties>
 		<java.version>14</java.version>
