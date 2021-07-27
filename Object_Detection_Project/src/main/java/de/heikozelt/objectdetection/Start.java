@@ -25,10 +25,15 @@ import ai.djl.repository.zoo.ZooModel;
 import ai.djl.translate.TranslateException;
 
 public class Start {
-	private static String COLLECTION_PATH = "collection";
-	private static String RESULT_XML_FILENAME = "result.xml";
-	private static String BOUNDING_BOXES_PATH = "boxes";
+	private static String collectionPath = "collection";
+	private static String resultXmlFilename = "result.xml";
+	private static String boundingBoxesPath = "boxes";
+	private static Boolean isSaveBoundingBoxImageEnabled = true; 
 	
+	public static void setSaveBoundingBoxImageEnabled(Boolean enabled) {
+		Start.isSaveBoundingBoxImageEnabled = enabled;
+	}
+
 	private static Logger logger = LogManager.getLogger(Start.class);
 
 	// Die static-Felder koennen unabhängig von der init()-methode gesetzt werden.
@@ -39,6 +44,18 @@ public class Start {
 	private static ZooModel<Image, DetectedObjects> model = null;
 	private static Predictor<Image, DetectedObjects> predictor = null;
 
+	public static void setCollectionPath(String path) {
+		Start.collectionPath = path;
+	}
+	
+	public static void setResultXmlFilename(String resultXmlFilename) {
+		Start.resultXmlFilename = resultXmlFilename;
+	}
+
+	public static void setBoundingBoxesPath(String boundingBoxesPath) {
+		Start.boundingBoxesPath = boundingBoxesPath;
+	}
+	
 	/**
 	 * initialisiert benötigte Bild-Erkennungs-Engine
 	 */
@@ -113,7 +130,7 @@ public class Start {
 	 * @throws TranslateException
 	 */
 	public static Result detect(String fileName) throws IOException, TranslateException {
-		String path = COLLECTION_PATH + File.separator + fileName;
+		String path = collectionPath + File.separator + fileName;
 		logger.debug("reading image from file: " + path);
 		File f = new File(path);
 		FileInputStream in = new FileInputStream(f);
@@ -122,19 +139,23 @@ public class Start {
 		logger.debug("result: " + objects.getClass().getName());
 		logger.debug("result.items(): " + objects.items().getClass().getName());
 		Result result = new Result(fileName, img.getWidth(), img.getHeight(), objects);
-		String bbFilename = BOUNDING_BOXES_PATH + File.separator + f.getName() + ".boxes.png";
-		saveBoundingBoxImage(img, objects, bbFilename);
+		String bbFilename = boundingBoxesPath + File.separator + f.getName() + ".boxes.png";
+		if(isSaveBoundingBoxImageEnabled) {
+		  saveBoundingBoxImage(img, objects, bbFilename);
+		}
 		return result;
 	}
 
 	/**
 	 * Führt die Objekt-Ekennung für alle Bilder im "collection"-Verzeichnis durch.
 	 * @return
-	 * @throws IOException
-	 * @throws TranslateException
+	 * @throws Exception 
 	 */
-	public static Result[] detectAll() throws IOException, TranslateException {
-		String[] fileNames = new File(COLLECTION_PATH).list();
+	public static Result[] detectAll() throws Exception {
+		String[] fileNames = new File(collectionPath).list();
+		if(fileNames == null) {
+			throw new Exception("Collection files not found!");
+		}
 		Result[] results = new Result[fileNames.length];
 		for (int i = 0; i < fileNames.length; i++) {
 			results[i] = detect(fileNames[i]);
@@ -171,7 +192,7 @@ public class Start {
 			str.append(r.asXml());
 		}
 		str.append("</gmaf-collection>");
-		BufferedWriter bwr = new BufferedWriter(new FileWriter(new File(RESULT_XML_FILENAME)));
+		BufferedWriter bwr = new BufferedWriter(new FileWriter(new File(resultXmlFilename)));
 		bwr.write(str.toString());
 		bwr.close();
 	}
@@ -181,10 +202,9 @@ public class Start {
 	 * In Form einer Batch-Verarbeitung werden alle Bilder gelesen, Objekte erkannt und das Ergebnis gespeichert.
 	 * Danach beendet sich das Programm.
 	 * @param args
-	 * @throws IOException
-	 * @throws TranslateException
+	 * @throws Exception 
 	 */
-	public static void main(String[] args) throws IOException, TranslateException {
+	public static void main(String[] args) throws Exception {
 		logger.info("Batch job started");
 		init();
 		Result[] results = detectAll();
@@ -192,4 +212,5 @@ public class Start {
 		exportAll(results);
 		logger.info("Batch job finished");
 	}
+
 }

@@ -23,14 +23,11 @@
 				<scope>import</scope>
 			</dependency>
 		</dependencies>
-	</dependencyManagement>	
+	</dependencyManagement>
 	<dependencies>
-	        <!-- Das jar-File liegt jetzt im lib-Verzeichnis statt im Maven-Repo -->
-		<!--dependency>
-			<groupId>de.swa</groupId>
-			<artifactId>gmaf</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency -->
+		<!-- Das jar-File liegt jetzt im lib-Verzeichnis statt im Maven-Repo -->
+		<!--dependency> <groupId>de.swa</groupId> <artifactId>gmaf</artifactId> 
+			<version>0.0.1-SNAPSHOT</version> </dependency -->
 
 		<dependency>
 			<groupId>ai.djl</groupId>
@@ -118,6 +115,5 @@
 			<version>3.7.7</version>
 			<scope>test</scope>
 		</dependency>
-
 	</dependencies>
 </project>
