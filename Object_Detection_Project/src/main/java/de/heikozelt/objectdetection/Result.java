@@ -22,10 +22,25 @@ import ai.djl.modality.cv.output.DetectedObjects.DetectedObject;
 public class Result {
 	private static Logger logger = LogManager.getLogger(Result.class);
 
+	/**
+	 * Dateiname der Bilddatei
+	 */
 	private String filename;
+	/**
+	 * Bildbreite in Pixel
+	 */
 	private int imgWidth;
+	/**
+	 * Bildhöhe in Pixel
+	 */
 	private int imgHeight;
+	/**
+	 * Uhrzeit/Datum der Istanziierung 
+	 */
 	private Date date = new Date();
+	/**
+	 * erkannte Objekte
+	 */
 	private DetectedObjects objects;
 
 	/**
@@ -78,10 +93,10 @@ public class Result {
 	 * </pre>
 	 */
 	public String objectAsXml(DetectedObject obj) {
+		logger.debug("term: " + obj.getClassName());
 		BoundingBox box = obj.getBoundingBox();
-		logger.info("BB: " + box.toString());
+		logger.debug("bounding box: " + box.toString());
 		Rectangle rect = box.getBounds();
-		logger.info("rect: " + rect);
 		int xPx = (int) Math.round(rect.getX() * imgWidth);
 		int yPx = (int) Math.round(rect.getY() * imgHeight);
 		int widthPx = (int) Math.round(rect.getWidth() * imgWidth);
@@ -128,6 +143,7 @@ public class Result {
 	 */
 	public String asXml() {
 		StringBuilder str = new StringBuilder();
+		logger.debug("file: " + filename);
 		str.append("  <gmaf-data>\n");
 		str.append("    <file>").append(filename).append("</file>\n");
 		str.append("    <date>").append(date).append("</date>\n");
