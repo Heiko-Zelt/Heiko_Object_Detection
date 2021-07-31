@@ -1,0 +1,112 @@
+<gmaf-collection xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="gmaf_schema.xsd">
+  <gmaf-data>
+    <file>0423.png</file>
+    <date>Fri Jul 30 17:07:39 CEST 2021</date>
+    <objects>
+    </objects>
+  </gmaf-data>
+  <gmaf-data>
+    <file>0660.png</file>
+    <date>Fri Jul 30 17:07:42 CEST 2021</date>
+    <objects>
+    </objects>
+  </gmaf-data>
+  <gmaf-data>
+    <file>0009.png</file>
+    <date>Fri Jul 30 17:07:44 CEST 2021</date>
+    <objects>
+    </objects>
+  </gmaf-data>
+  <gmaf-data>
+    <file>0417.png</file>
+    <date>Fri Jul 30 17:07:47 CEST 2021</date>
+    <objects>
+      <object>
+        <term>person</term>
+        <bounding-box>
+          <x>225</x>
+          <y>99</y>
+          <width>297</width>
+          <height>802</height>
+        </bounding-box>
+        <probability>0.9489582777023315</probability>
+      </object>
+      <object>
+        <term>person</term>
+        <bounding-box>
+          <x>713</x>
+          <y>390</y>
+          <width>262</width>
+          <height>229</height>
+        </bounding-box>
+        <probability>0.9361392259597778</probability>
+      </object>
+    </objects>
+  </gmaf-data>
+  <gmaf-data>
+    <file>0472.png</file>
+    <date>Fri Jul 30 17:07:49 CEST 2021</date>
+    <objects>
+    </objects>
+  </gmaf-data>
+  <gmaf-data>
+    <file>0668.png</file>
+    <date>Fri Jul 30 17:07:52 CEST 2021</date>
+    <objects>
+      <object>
+        <term>person</term>
+        <bounding-box>
+          <x>1438</x>
+          <y>282</y>
+          <width>383</width>
+          <height>1017</height>
+        </bounding-box>
+        <probability>0.9835073947906494</probability>
+      </object>
+      <object>
+        <term>person</term>
+        <bounding-box>
+          <x>807</x>
+          <y>427</y>
+          <width>270</width>
+          <height>846</height>
+        </bounding-box>
+        <probability>0.9316738843917847</probability>
+      </object>
+      <object>
+        <term>backpack</term>
+        <bounding-box>
+          <x>735</x>
+          <y>517</y>
+          <width>201</width>
+          <height>291</height>
+        </bounding-box>
+        <probability>0.9062731266021729</probability>
+      </object>
+    </objects>
+  </gmaf-data>
+  <gmaf-data>
+    <file>0453.png</file>
+    <date>Fri Jul 30 17:07:54 CEST 2021</date>
+    <objects>
+    </objects>
+  </gmaf-data>
+  <gmaf-data>
+    <file>0003.png</file>
+    <date>Fri Jul 30 17:07:56 CEST 2021</date>
+    <objects>
+    </objects>
+  </gmaf-data>
+  <gmaf-data>
+    <file>0006.png</file>
+    <date>Fri Jul 30 17:07:59 CEST 2021</date>
+    <objects>
+    </objects>
+  </gmaf-data>
+  <gmaf-data>
+    <file>0406.png</file>
+    <date>Fri Jul 30 17:08:01 CEST 2021</date>
+    <objects>
+    </objects>
+  </gmaf-data>
+</gmaf-collection>

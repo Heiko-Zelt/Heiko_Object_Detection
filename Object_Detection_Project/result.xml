@@ -1,181 +1,212 @@
-<gmaf-collection xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="gmaf_schema.xsd">  <gmaf-data>
+<gmaf-collection xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="gmaf_schema.xsd">
+  <gmaf-data>
     <file>0423.png</file>
-    <date>Wed Jul 28 23:31:20 CEST 2021</date>
+    <date>Fri Jul 30 17:02:40 CEST 2021</date>
     <objects>
       <object>
-        <term>Tortoise</term>
+        <term>bird</term>
         <bounding-box>
-          <x>195</x>
-          <y>74</y>
-          <width>1804</width>
-          <height>1168</height>
+          <x>266</x>
+          <y>87</y>
+          <width>1460</width>
+          <height>992</height>
         </bounding-box>
-        <probability>0.7543014287948608</probability>
+        <probability>0.7114779949188232</probability>
       </object>
     </objects>
   </gmaf-data>
   <gmaf-data>
     <file>0660.png</file>
-    <date>Wed Jul 28 23:31:22 CEST 2021</date>
+    <date>Fri Jul 30 17:02:43 CEST 2021</date>
     <objects>
       <object>
-        <term>Human face</term>
+        <term>person</term>
         <bounding-box>
-          <x>1599</x>
-          <y>217</y>
-          <width>230</width>
-          <height>330</height>
+          <x>773</x>
+          <y>425</y>
+          <width>600</width>
+          <height>880</height>
         </bounding-box>
-        <probability>0.40814417600631714</probability>
-      </object>
-      <object>
-        <term>Sculpture</term>
-        <bounding-box>
-          <x>1218</x>
-          <y>115</y>
-          <width>728</width>
-          <height>1241</height>
-        </bounding-box>
-        <probability>0.4006253778934479</probability>
+        <probability>0.6109824180603027</probability>
       </object>
     </objects>
   </gmaf-data>
   <gmaf-data>
     <file>0009.png</file>
-    <date>Wed Jul 28 23:31:23 CEST 2021</date>
+    <date>Fri Jul 30 17:02:46 CEST 2021</date>
     <objects>
+      <object>
+        <term>person</term>
+        <bounding-box>
+          <x>1791</x>
+          <y>1193</y>
+          <width>52</width>
+          <height>99</height>
+        </bounding-box>
+        <probability>0.5263340473175049</probability>
+      </object>
     </objects>
   </gmaf-data>
   <gmaf-data>
     <file>0417.png</file>
-    <date>Wed Jul 28 23:31:25 CEST 2021</date>
+    <date>Fri Jul 30 17:02:48 CEST 2021</date>
     <objects>
+      <object>
+        <term>person</term>
+        <bounding-box>
+          <x>225</x>
+          <y>99</y>
+          <width>297</width>
+          <height>802</height>
+        </bounding-box>
+        <probability>0.9489582777023315</probability>
+      </object>
+      <object>
+        <term>person</term>
+        <bounding-box>
+          <x>713</x>
+          <y>390</y>
+          <width>262</width>
+          <height>229</height>
+        </bounding-box>
+        <probability>0.9361392259597778</probability>
+      </object>
+      <object>
+        <term>person</term>
+        <bounding-box>
+          <x>1607</x>
+          <y>96</y>
+          <width>321</width>
+          <height>223</height>
+        </bounding-box>
+        <probability>0.8937709331512451</probability>
+      </object>
+      <object>
+        <term>person</term>
+        <bounding-box>
+          <x>1260</x>
+          <y>580</y>
+          <width>351</width>
+          <height>353</height>
+        </bounding-box>
+        <probability>0.8932745456695557</probability>
+      </object>
+      <object>
+        <term>person</term>
+        <bounding-box>
+          <x>1064</x>
+          <y>465</y>
+          <width>244</width>
+          <height>291</height>
+        </bounding-box>
+        <probability>0.7682314515113831</probability>
+      </object>
+      <object>
+        <term>person</term>
+        <bounding-box>
+          <x>1406</x>
+          <y>76</y>
+          <width>170</width>
+          <height>183</height>
+        </bounding-box>
+        <probability>0.6226167678833008</probability>
+      </object>
     </objects>
   </gmaf-data>
   <gmaf-data>
     <file>0472.png</file>
-    <date>Wed Jul 28 23:31:26 CEST 2021</date>
+    <date>Fri Jul 30 17:02:50 CEST 2021</date>
     <objects>
-      <object>
-        <term>Fish</term>
-        <bounding-box>
-          <x>445</x>
-          <y>454</y>
-          <width>1057</width>
-          <height>630</height>
-        </bounding-box>
-        <probability>0.852164626121521</probability>
-      </object>
     </objects>
   </gmaf-data>
   <gmaf-data>
     <file>0668.png</file>
-    <date>Wed Jul 28 23:31:27 CEST 2021</date>
+    <date>Fri Jul 30 17:02:53 CEST 2021</date>
     <objects>
       <object>
-        <term>Person</term>
+        <term>person</term>
         <bounding-box>
-          <x>828</x>
-          <y>450</y>
-          <width>275</width>
-          <height>815</height>
+          <x>1438</x>
+          <y>282</y>
+          <width>383</width>
+          <height>1017</height>
         </bounding-box>
-        <probability>0.4624505937099457</probability>
+        <probability>0.9835073947906494</probability>
       </object>
       <object>
-        <term>Man</term>
+        <term>person</term>
         <bounding-box>
-          <x>828</x>
-          <y>450</y>
-          <width>275</width>
-          <height>815</height>
+          <x>807</x>
+          <y>427</y>
+          <width>270</width>
+          <height>846</height>
         </bounding-box>
-        <probability>0.4476315975189209</probability>
+        <probability>0.9316738843917847</probability>
+      </object>
+      <object>
+        <term>backpack</term>
+        <bounding-box>
+          <x>735</x>
+          <y>517</y>
+          <width>201</width>
+          <height>291</height>
+        </bounding-box>
+        <probability>0.9062731266021729</probability>
+      </object>
+      <object>
+        <term>person</term>
+        <bounding-box>
+          <x>1292</x>
+          <y>424</y>
+          <width>224</width>
+          <height>811</height>
+        </bounding-box>
+        <probability>0.7837093472480774</probability>
       </object>
     </objects>
   </gmaf-data>
   <gmaf-data>
     <file>0453.png</file>
-    <date>Wed Jul 28 23:31:29 CEST 2021</date>
+    <date>Fri Jul 30 17:02:55 CEST 2021</date>
     <objects>
-      <object>
-        <term>Window</term>
-        <bounding-box>
-          <x>1010</x>
-          <y>593</y>
-          <width>395</width>
-          <height>765</height>
-        </bounding-box>
-        <probability>0.752339243888855</probability>
-      </object>
     </objects>
   </gmaf-data>
   <gmaf-data>
     <file>0003.png</file>
-    <date>Wed Jul 28 23:31:30 CEST 2021</date>
+    <date>Fri Jul 30 17:02:57 CEST 2021</date>
     <objects>
-      <object>
-        <term>Palm tree</term>
-        <bounding-box>
-          <x>1073</x>
-          <y>0</y>
-          <width>855</width>
-          <height>1159</height>
-        </bounding-box>
-        <probability>0.5887498259544373</probability>
-      </object>
-      <object>
-        <term>Palm tree</term>
-        <bounding-box>
-          <x>239</x>
-          <y>201</y>
-          <width>734</width>
-          <height>831</height>
-        </bounding-box>
-        <probability>0.5323179960250854</probability>
-      </object>
-      <object>
-        <term>Palm tree</term>
-        <bounding-box>
-          <x>417</x>
-          <y>412</y>
-          <width>549</width>
-          <height>634</height>
-        </bounding-box>
-        <probability>0.42135709524154663</probability>
-      </object>
-      <object>
-        <term>Palm tree</term>
-        <bounding-box>
-          <x>0</x>
-          <y>0</y>
-          <width>856</width>
-          <height>1127</height>
-        </bounding-box>
-        <probability>0.4173866808414459</probability>
-      </object>
     </objects>
   </gmaf-data>
   <gmaf-data>
     <file>0006.png</file>
-    <date>Wed Jul 28 23:31:32 CEST 2021</date>
+    <date>Fri Jul 30 17:03:00 CEST 2021</date>
     <objects>
       <object>
-        <term>Butterfly</term>
+        <term>bird</term>
         <bounding-box>
-          <x>137</x>
-          <y>360</y>
-          <width>1102</width>
+          <x>88</x>
+          <y>355</y>
+          <width>1156</width>
           <height>1148</height>
         </bounding-box>
-        <probability>0.9146237969398499</probability>
+        <probability>0.6396133899688721</probability>
       </object>
     </objects>
   </gmaf-data>
   <gmaf-data>
     <file>0406.png</file>
-    <date>Wed Jul 28 23:31:33 CEST 2021</date>
+    <date>Fri Jul 30 17:03:02 CEST 2021</date>
     <objects>
+      <object>
+        <term>person</term>
+        <bounding-box>
+          <x>-14</x>
+          <y>54</y>
+          <width>816</width>
+          <height>1970</height>
+        </bounding-box>
+        <probability>0.8899252414703369</probability>
+      </object>
     </objects>
   </gmaf-data>
 </gmaf-collection>

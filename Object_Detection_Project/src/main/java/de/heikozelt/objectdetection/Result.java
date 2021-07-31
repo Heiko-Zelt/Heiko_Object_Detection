@@ -12,9 +12,9 @@ import ai.djl.modality.cv.output.DetectedObjects.DetectedObject;
 
 /**
  * Ein Objekt dieser Klasse beinhaltet einen Dateiname, einer Bilddatei, die
- * Bildgröße und das Ergebnis der Objekterkennung. Es können mehrere Objekte pro
- * Bild erkannt werden. Zu jedem erkannten Objekt gibt es einen Klassennamen,
- * eine Bounding Box und eine Wahrscheinlichkeit.
+ * Bildgröße und das Ergebnis der Objekterkennung für dieses Bild. Es können
+ * mehrere Objekte pro Bild erkannt werden. Zu jedem erkannten Objekt gibt es
+ * einen Klassennamen, eine Bounding Box und eine Wahrscheinlichkeit.
  * 
  * @author Heiko Zelt
  * @see ai.djl.modality.cv.output.DetectedObjects.DetectedObject
@@ -26,18 +26,31 @@ public class Result {
 	 * Dateiname der Bilddatei
 	 */
 	private String filename;
+	
 	/**
 	 * Bildbreite in Pixel
 	 */
 	private int imgWidth;
+	
 	/**
 	 * Bildhöhe in Pixel
 	 */
 	private int imgHeight;
+	
 	/**
-	 * Uhrzeit/Datum der Istanziierung 
+	 * Uhrzeit/Datum der Istanziierung
 	 */
 	private Date date = new Date();
+	
+	/**
+	 * Laufzeit der eigentlichen Objekt-Erkennung (für Performance-Vergleich/Statistik-Auswertung)
+	 */
+	private long predictTime;
+	
+	public long getPredictTime() {
+		return predictTime;
+	}
+
 	/**
 	 * erkannte Objekte
 	 */
@@ -67,16 +80,19 @@ public class Result {
 	 * @param imgHeight
 	 * @param objects
 	 */
-	public Result(String filename, int imgWidth, int imgHeight, DetectedObjects objects) {
+	public Result(String filename, int imgWidth, int imgHeight, DetectedObjects objects, long predictTime) {
 		this.filename = filename;
 		this.imgWidth = imgWidth;
 		this.imgHeight = imgHeight;
 		this.objects = objects;
+		this.predictTime = predictTime;
 	}
 
 	/**
 	 * Serialisiert die Daten eines erkannten Objekts als XML-Zeichenkette
+	 * 
 	 * @return Beispiel
+	 * 
 	 *         <pre>
 	 * {@code
 	 * <object>
@@ -117,7 +133,9 @@ public class Result {
 	}
 
 	/**
-	 * Serialisiert die Daten aller erkannten Objekte eines Bildes als XML-Zeichenkette.
+	 * Serialisiert die Daten aller erkannten Objekte eines Bildes als
+	 * XML-Zeichenkette.
+	 * 
 	 * @return Beispiel
 	 * 
 	 *         <pre>
@@ -155,6 +173,14 @@ public class Result {
 		str.append("    </objects>\n");
 		str.append("  </gmaf-data>\n");
 		return str.toString();
+	}
+
+	public int getImgWidth() {
+		return imgWidth;
+	}
+
+	public int getImgHeight() {
+		return imgHeight;
 	}
 
 }

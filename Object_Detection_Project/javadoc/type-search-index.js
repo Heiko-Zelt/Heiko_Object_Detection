@@ -1,1 +1,1 @@
-typeSearchIndex = [{"l":"All Classes","url":"allclasses-index.html"},{"p":"de.heikozelt.objectdetection","l":"BatchProcessor"},{"p":"de.heikozelt.objectdetection","l":"Result"}]
+typeSearchIndex = [{"l":"All Classes","url":"allclasses-index.html"},{"p":"de.heikozelt.objectdetection","l":"BatchJob"}]
