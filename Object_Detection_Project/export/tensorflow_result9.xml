@@ -1,0 +1,72 @@
+<gmaf-collection xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="gmaf_schema.xsd">
+  <gmaf-data>
+    <file>0423.png</file>
+    <date>Sat Jul 31 14:15:51 CEST 2021</date>
+    <objects>
+    </objects>
+  </gmaf-data>
+  <gmaf-data>
+    <file>0660.png</file>
+    <date>Sat Jul 31 14:15:53 CEST 2021</date>
+    <objects>
+    </objects>
+  </gmaf-data>
+  <gmaf-data>
+    <file>0009.png</file>
+    <date>Sat Jul 31 14:15:54 CEST 2021</date>
+    <objects>
+    </objects>
+  </gmaf-data>
+  <gmaf-data>
+    <file>0417.png</file>
+    <date>Sat Jul 31 14:15:56 CEST 2021</date>
+    <objects>
+    </objects>
+  </gmaf-data>
+  <gmaf-data>
+    <file>0472.png</file>
+    <date>Sat Jul 31 14:15:57 CEST 2021</date>
+    <objects>
+    </objects>
+  </gmaf-data>
+  <gmaf-data>
+    <file>0668.png</file>
+    <date>Sat Jul 31 14:15:58 CEST 2021</date>
+    <objects>
+    </objects>
+  </gmaf-data>
+  <gmaf-data>
+    <file>0453.png</file>
+    <date>Sat Jul 31 14:16:00 CEST 2021</date>
+    <objects>
+    </objects>
+  </gmaf-data>
+  <gmaf-data>
+    <file>0003.png</file>
+    <date>Sat Jul 31 14:16:01 CEST 2021</date>
+    <objects>
+    </objects>
+  </gmaf-data>
+  <gmaf-data>
+    <file>0006.png</file>
+    <date>Sat Jul 31 14:16:02 CEST 2021</date>
+    <objects>
+      <object>
+        <term>Butterfly</term>
+        <bounding-box>
+          <x>137</x>
+          <y>360</y>
+          <width>1102</width>
+          <height>1148</height>
+        </bounding-box>
+        <probability>0.9146237969398499</probability>
+      </object>
+    </objects>
+  </gmaf-data>
+  <gmaf-data>
+    <file>0406.png</file>
+    <date>Sat Jul 31 14:16:04 CEST 2021</date>
+    <objects>
+    </objects>
+  </gmaf-data>
+</gmaf-collection>

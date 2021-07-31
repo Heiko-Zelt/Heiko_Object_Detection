@@ -1,0 +1,122 @@
+<gmaf-collection xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="gmaf_schema.xsd">
+  <gmaf-data>
+    <file>0423.png</file>
+    <date>Sat Jul 31 14:14:11 CEST 2021</date>
+    <objects>
+      <object>
+        <term>Tortoise</term>
+        <bounding-box>
+          <x>195</x>
+          <y>74</y>
+          <width>1804</width>
+          <height>1168</height>
+        </bounding-box>
+        <probability>0.7543014287948608</probability>
+      </object>
+    </objects>
+  </gmaf-data>
+  <gmaf-data>
+    <file>0660.png</file>
+    <date>Sat Jul 31 14:14:13 CEST 2021</date>
+    <objects>
+    </objects>
+  </gmaf-data>
+  <gmaf-data>
+    <file>0009.png</file>
+    <date>Sat Jul 31 14:14:15 CEST 2021</date>
+    <objects>
+    </objects>
+  </gmaf-data>
+  <gmaf-data>
+    <file>0417.png</file>
+    <date>Sat Jul 31 14:14:16 CEST 2021</date>
+    <objects>
+    </objects>
+  </gmaf-data>
+  <gmaf-data>
+    <file>0472.png</file>
+    <date>Sat Jul 31 14:14:17 CEST 2021</date>
+    <objects>
+      <object>
+        <term>Fish</term>
+        <bounding-box>
+          <x>445</x>
+          <y>454</y>
+          <width>1057</width>
+          <height>630</height>
+        </bounding-box>
+        <probability>0.852164626121521</probability>
+      </object>
+    </objects>
+  </gmaf-data>
+  <gmaf-data>
+    <file>0668.png</file>
+    <date>Sat Jul 31 14:14:19 CEST 2021</date>
+    <objects>
+    </objects>
+  </gmaf-data>
+  <gmaf-data>
+    <file>0453.png</file>
+    <date>Sat Jul 31 14:14:20 CEST 2021</date>
+    <objects>
+      <object>
+        <term>Window</term>
+        <bounding-box>
+          <x>1010</x>
+          <y>593</y>
+          <width>395</width>
+          <height>765</height>
+        </bounding-box>
+        <probability>0.752339243888855</probability>
+      </object>
+    </objects>
+  </gmaf-data>
+  <gmaf-data>
+    <file>0003.png</file>
+    <date>Sat Jul 31 14:14:21 CEST 2021</date>
+    <objects>
+      <object>
+        <term>Palm tree</term>
+        <bounding-box>
+          <x>1073</x>
+          <y>0</y>
+          <width>855</width>
+          <height>1159</height>
+        </bounding-box>
+        <probability>0.5887498259544373</probability>
+      </object>
+      <object>
+        <term>Palm tree</term>
+        <bounding-box>
+          <x>239</x>
+          <y>201</y>
+          <width>734</width>
+          <height>831</height>
+        </bounding-box>
+        <probability>0.5323179960250854</probability>
+      </object>
+    </objects>
+  </gmaf-data>
+  <gmaf-data>
+    <file>0006.png</file>
+    <date>Sat Jul 31 14:14:23 CEST 2021</date>
+    <objects>
+      <object>
+        <term>Butterfly</term>
+        <bounding-box>
+          <x>137</x>
+          <y>360</y>
+          <width>1102</width>
+          <height>1148</height>
+        </bounding-box>
+        <probability>0.9146237969398499</probability>
+      </object>
+    </objects>
+  </gmaf-data>
+  <gmaf-data>
+    <file>0406.png</file>
+    <date>Sat Jul 31 14:14:24 CEST 2021</date>
+    <objects>
+    </objects>
+  </gmaf-data>
+</gmaf-collection>
