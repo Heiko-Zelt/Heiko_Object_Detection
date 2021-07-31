@@ -25,15 +25,15 @@ import ai.djl.repository.zoo.ZooModel;
 import ai.djl.translate.TranslateException;
 
 /**
- * Liest Bild-Dateien aus einem Verzeichnis, erkennt Objekte und speichert das
- * Ergbnis als XML-Datei. Zwecks Objekt-Erkennung wird die Deep Java Library
- * verwendet.
+ * Die Klasse enthält das Hauptprogramm. Es liest Bild-Dateien aus einem
+ * Verzeichnis, erkennt Objekte und speichert das Ergbnis als XML-Datei. Zwecks
+ * Objekt-Erkennung wird die Deep Java Library verwendet.
  * 
  * @author Heiko Zelt
  */
 public class BatchJob {
 	private static String collectionPath = "collection";
-	private static String resultXmlFilename = "result.xml";
+	private static String resultXmlFilename = "export/result.xml";
 	private static String boundingBoxesPath = "boxes";
 	private static Boolean isSaveBoundingBoxImageEnabled = true;
 	private static float threshold = 0.5f;
@@ -43,7 +43,7 @@ public class BatchJob {
 	 * werden. Mit dieser Methode kann diese Funktionalität ein- oder ausgeschaltet
 	 * werden.
 	 * 
-	 * @param enabled
+	 * @param enabled true = aktiviert
 	 */
 	public static void setSaveBoundingBoxImageEnabled(Boolean enabled) {
 		BatchJob.isSaveBoundingBoxImageEnabled = enabled;
@@ -74,7 +74,7 @@ public class BatchJob {
 	 * Mit dieser Methode kann ein vom Standartwert abweichender Dateiname für die
 	 * Ergebnisdatei gesetzt werden.
 	 * 
-	 * @param resultXmlFilename Beispiel: "result.xml" oder "/tmp/export.xml"
+	 * @param resultXmlFilename Beispiel: "export/result.xml" oder "/tmp/export.xml"
 	 */
 	public static void setResultXmlFilename(String resultXmlFilename) {
 		BatchJob.resultXmlFilename = resultXmlFilename;
@@ -163,7 +163,7 @@ public class BatchJob {
 	 * Liest ein Bild aus einer Datei und startet die Objekt-Erkennung. Nebenbei
 	 * wird eine Kopie mit Bounding Boxes gespeichert.
 	 * 
-	 * @param fileName
+	 * @param fileName Dateiname der Bilddatei (ohne Pfad)
 	 * @return erkannte Objekte und weitere Infos
 	 * @throws IOException
 	 * @throws TranslateException
@@ -191,7 +191,7 @@ public class BatchJob {
 	/**
 	 * Führt die Objekt-Ekennung für alle Bilder im "collection"-Verzeichnis durch.
 	 * 
-	 * @return
+	 * @return Ergebnis-Liste mit Bildern und erkannten Objekten
 	 * @throws Exception
 	 */
 	public static Result[] detectAll() throws Exception {
@@ -210,7 +210,7 @@ public class BatchJob {
 	/**
 	 * Schreibt das Ergebnis der Objekt-Erkennung ins Log.
 	 * 
-	 * @param results
+	 * @param results Liste mit Bildern und erkannten Objekten
 	 */
 	public static void printAll(Result[] results) {
 		for (Result r : results) {
@@ -225,7 +225,7 @@ public class BatchJob {
 	/**
 	 * Formatiert das Ergebnis der Objekt-Erkennung als "großen" XML-String
 	 * 
-	 * @param results
+	 * @param results Liste mit Bildern und erkannten Objekten
 	 * @return XML-String mit erkannten Objekten
 	 */
 	public static String resultsAsXml(Result[] results) {
@@ -243,7 +243,7 @@ public class BatchJob {
 	 * Speichert/Serialisiert das Ergebnis der Objekt-Erkennung als eine "große"
 	 * XML-Datei.
 	 * 
-	 * @param results
+	 * @param results Liste mit Bildern und erkannten Objekten
 	 * @throws IOException
 	 */
 	public static void exportAll(Result[] results) throws IOException {
@@ -254,6 +254,11 @@ public class BatchJob {
 		bwr.close();
 	}
 
+	/**
+	 * Berechnet die durchschnittlich benötigte Zeit, ein Bild zu analysieren.
+	 * @param results Liste mit Bildern und erkannten Objekten
+	 * @return Zeit in Millisekunden
+	 */
 	public static long calculateAveragePredictTime(Result[] results) {
 		long sum = 0;
 		for (Result r : results) {
@@ -272,7 +277,7 @@ public class BatchJob {
 	 * @param args Kommandozeilenparameter:
 	 *             <ol>
 	 *             <li>Verzeichnis mit Bildern z.B. "collections"</li>
-	 *             <li>Ergebnisdatei z.B. "result.xml"</li>
+	 *             <li>Ergebnisdatei z.B. "export/result.xml"</li>
 	 *             <li>Threshold z.B. 0.5.</li>
 	 *             </ol>
 	 */
@@ -310,22 +315,42 @@ public class BatchJob {
 		}
 	}
 
+	/**
+	 * einfache Setter-Methode.
+	 * @param engine siehe DJL-Doku
+	 */
 	public static void setEngine(Engine engine) {
 		BatchJob.engine = engine;
 	}
 
+	/**
+	 * einfache Setter-Methode
+	 * @param backbone siehe DJL-Doku
+	 */
 	public static void setBackbone(String backbone) {
 		BatchJob.backbone = backbone;
 	}
 
+	/**
+	 * einfache setterMethode
+	 * @param criteria siehe DJL-Doku
+	 */
 	public static void setCriteria(Criteria<Image, DetectedObjects> criteria) {
 		BatchJob.criteria = criteria;
 	}
 
+	/**
+	 * einfache Setter-Methode
+	 * @param model siehe DJL-Doku
+	 */
 	public static void setModel(ZooModel<Image, DetectedObjects> model) {
 		BatchJob.model = model;
 	}
 
+	/**
+	 * einfache Setter-Methode
+	 * @param predictor siehe DJL-Doku
+	 */
 	public static void setPredictor(Predictor<Image, DetectedObjects> predictor) {
 		BatchJob.predictor = predictor;
 	}

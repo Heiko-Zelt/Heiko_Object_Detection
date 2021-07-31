@@ -17,6 +17,10 @@ import ai.djl.modality.cv.output.DetectedObjects;
 import ai.djl.modality.cv.output.DetectedObjects.DetectedObject;
 import ai.djl.modality.cv.output.Rectangle;
 
+/**
+ * JUni-Tests für Klasse Result
+ * @author Heiko Zelt
+ */
 public class ResultTest {
 	private static Logger logger = LogManager.getLogger(ResultTest.class);
 
