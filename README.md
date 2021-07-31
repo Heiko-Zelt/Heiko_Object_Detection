@@ -29,6 +29,10 @@ in Eclipse
 1. Im Project Explorer "src/main/java" > "de.heikozelt.objectdetection" > "BatchJob.java", Klick mit rechter Maustaste > "Run As" > "Java Application"
 1. Auf der Console erscheint folgende Meldung: "SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder". Diese kann ignoriert werden.
 1. Beim allerersten Starten läd die Deep Java Library ggf. Code aus dem Internet nach. Diese Downloads können je nach Engine umfangreich sein. Es dauert entsprechend lange. Bei schlechter Internet-Verbindung / abgebrochenem Download kann die Fehlermeldung "javax.net.ssl.SSLException: Tag mismatch!" ausgegeben werden. Einfach nochmal versuchen!
+1. Es könnnen 3 Kommandozeilenparameter übergeben werden:
+   1. Verzeichnisname mit den Bildern (z.B. collection)
+   2. Dateiname der Ergebnisdatei (z.B. export/result.xml)
+   3. Schwellwert für wahrscheinlichkeit (z.B. 0.5)
 
 ## Auswahl der Machine Learning Engine und des Modells
 
